@@ -25,3 +25,17 @@ spec:
 # To schedule pods on based on NodeSelectors
       nodeSelector:
         app: system-apps
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-app-svc
+spec:
+  selector:
+    app: python-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: LoadBalancer
