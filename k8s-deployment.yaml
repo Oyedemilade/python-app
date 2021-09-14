@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: dterraform.azurecr.io/app3/python-app:latest
+          image: dterraform.azurecr.io/app3/python-app
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
