@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-python-deployment
+  name: python-app-deployment
+  labels:
+    app: python-app
 spec:
   replicas: 1
   selector:
@@ -13,15 +15,13 @@ spec:
         app: python-app
     spec:
       containers:
-      - name: my-python-app
-        image: dterraform.azurecr.io/app3/python-app:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
+        - name: python-app
+          image: dterraform.azurecr.io/app3/python-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
       imagePullSecrets:   # Update Image Pull Secret Name we creted
         - name: dterraform-secret
 # To schedule pods on based on NodeSelectors
       nodeSelector:
         app: system-apps
-
-
